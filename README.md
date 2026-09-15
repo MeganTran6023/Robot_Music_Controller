@@ -21,6 +21,7 @@ A beginner's guide to this FreeRTOS project running on a Raspberry Pi Pico W. It
 
 | File | Purpose |
 |---|---|
+| `Robot_Controller_Demo (1).mp4` | Video Demo of the Project 
 | `main.c` | The application: pin/LCD definitions, LCD helper functions, and the two FreeRTOS tasks. |
 | `FreeRTOSConfig.h` | FreeRTOS kernel configuration (tick rate, heap size, priorities, which API functions are compiled in, etc.). Required by every FreeRTOS project. |
 | `CMakeLists.txt` | Build configuration — tells CMake where to find the Pico SDK and FreeRTOS kernel, which board to target (`pico_w`), and which libraries to link (`hardware_i2c`, `hardware_adc`, etc.). |
