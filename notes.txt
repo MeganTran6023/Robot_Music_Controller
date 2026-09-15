@@ -1,0 +1,60 @@
+**RTOS Concepts**
+
+* In your `vInteractionTask`,
+you use both `vTaskDelay()` and `sleep_us()`.
+Why did you choose to use `sleep_us()`
+for the buzzer toggling,
+but `vTaskDelay()`
+for the joystick polling loop,
+and how does this specific choice
+affect the RTOS background processing?
+
+A:
+
+vTaskDelay - longer waits 
+sleep_us - shorter waits (busy wait)
+
+if you switch the two up, the whole system lock
+- doesnt process the other action
+
+ex)
+
+total time is 500 ms
+
+if task A runs for 10 ms, it waits for 490 ms -> use vTaskDelay
+
+if task B runs for the remaining 490 ms -> use sleep_ms as it only waits
+for 10 ms
+
+**Mutexes and Synchronization**
+
+The provided code declares a global variable named shared_counter and an xMutex handle, 
+though neither is actively utilized within the task loops. 
+
+How must you modify the code using xSemaphoreTake() and xSemaphoreGive() 
+to properly synchronize access to this variable and prevent data corruption?
+
+
+A: Have interaction task call xSemaphoreTake when in use and after its done 
+run xSemaphoreGive to blink task and same pattern goes for the blink to release lock  
+so interaction can take the lock on modifying the counter variable.
+
+
+**Task Scheduling**
+
+* Your `vInteractionTask` (Priority 2)
+has a higher priority than `vBlinkTask` (Priority 1).
+Exactly how does the `vTaskDelay(pdMS_TO_TICKS(50))` call
+inside your 2.5-second joystick polling loop
+allow the lower-priority blink task to execute
+without being starved?
+
+1)The vInteractionTask does not use a semaphore lock during the 2.5-second window.
+
+Instead, vTaskDelay(pdMS_TO_TICKS(50)) is called during every iteration of the polling loop.
+
+This temporarily places the higher-priority vInteractionTask into a Blocked state for 50 milliseconds at a time.
+
+While the interaction task is blocked, the FreeRTOS scheduler automatically assigns CPU time to the Ready, lower-priority vBlinkTask.
+
+This allows the LCD face to update without being starved.
