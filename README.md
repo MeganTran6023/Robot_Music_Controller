@@ -27,7 +27,6 @@ A beginner's guide to this FreeRTOS project running on a Raspberry Pi Pico W. It
 | `CMakeLists.txt` | Build configuration — tells CMake where to find the Pico SDK and FreeRTOS kernel, which board to target (`pico_w`), and which libraries to link (`hardware_i2c`, `hardware_adc`, etc.). |
 | `notes.txt` | Q&A notes on the RTOS concepts used here (delay vs. busy-wait, mutexes, task starvation). Worth reading alongside the code. |
 
-The `copy` variants of these files (`main copy.c`, `CMakeLists copy 2.txt`, etc.) are earlier drafts kept for reference — they aren't part of the active build.
 
 ## Hardware you'll need
 
