@@ -4,8 +4,6 @@
 
 <img width="3000" height="2188" alt="image" src="https://github.com/user-attachments/assets/b9a07dbd-b28d-4b6a-9256-39032759d7b1" />
 
-# Blink Project — RTOS Playground
-
 A beginner's guide to this FreeRTOS project running on a Raspberry Pi Pico W. It uses two concurrent tasks — one that reads a joystick and buzzer, and one that animates a face on an I2C LCD — to demonstrate task priorities, delays, and (as a follow-up exercise) mutexes.
 
 ## What this project does
