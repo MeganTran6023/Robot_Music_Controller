@@ -53,28 +53,12 @@ export PICO_SDK_PATH="$HOME/pico/pico-sdk"
 export FREERTOS_KERNEL_PATH="$HOME/pico/FreeRTOS-Kernel"
 ```
 
-On Windows, these paths will look more like:
-
-```
-PICO_SDK_PATH:        C:/Users/megantran/Downloads/test_rpi_pico/freertos-pico/pico-sdk
-FREERTOS_KERNEL_PATH:  C:/Users/megantran/Downloads/test_rpi_pico/freertos-pico/FreeRTOS-Kernel
-```
 
 You'll also need the Arm GNU Toolchain's `bin` folder available, e.g.:
 
 ```
 C:\Program Files (x86)\Arm GNU Toolchain arm-none-eabi\12.3 rel1\bin
 ```
-
-When CMake runs, it prints these back out so you can confirm they're pointing at the right place:
-
-```
--- --- DEBUG ENVIRONMENT VARIABLES ---
--- PICO_SDK_PATH: 'C:/Users/megantran/Downloads/test_rpi_pico/freertos-pico/pico-sdk'
--- FREERTOS_KERNEL_PATH: 'C:/Users/megantran/Downloads/test_rpi_pico/freertos-pico/FreeRTOS-Kernel'
-```
-
-If either path prints blank, the environment variable isn't set in the shell you're building from — set it there before continuing.
 
 ## Building (Windows)
 
